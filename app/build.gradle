@@ -34,7 +34,7 @@ android {
     }
     productFlavors {
         firstapp {
-            applicationId 'com.apps.firstapp'
+            applicationIdSuffix ".firstapp"
             /*Generating @API_PARAM (String Resource) to
              differentiate each application for different login credentials.
              you can post it in API-parameter to backend for common API architecture.*/
@@ -42,22 +42,45 @@ android {
             resValue "string", "app_name", "First Application"
         }
         secondapp {
+            applicationIdSuffix ".secondapp"
             applicationId 'com.apps.secondapp'
             resValue "string", "API_PARAM", "SecondApp"
             resValue "string", "app_name", "Second Application"
         }
         thirdapp {
-            applicationId 'com.apps.thirdapp'
+            applicationIdSuffix ".thirdapp"
             resValue "string", "API_PARAM", "ThirdApp"
             resValue "string", "app_name", "Third Application"
         }
         fourthapp {
-            applicationId 'com.apps.fourthapp'
+            applicationIdSuffix ".fourthapp"
             resValue "string", "API_PARAM", "FourthApp"
             resValue "string", "app_name", "Fourth Application"
         }
         /* And So On...
         You can add more flavors if you want to add more apps for white labeling.*/
+    }
+
+    /*Don't add sourceSets, until you really need it.
+    * If you want to implement some changes in coding/java part of flavors,
+    * then you can add sourceSets in gradle to set paths of specific flavor's java files.
+    */
+    sourceSets {
+        main {
+            java.srcDirs('src/main/java')
+        }
+        firstapp {
+            java.srcDirs('src/firstapp/java')
+        }
+        secondapp {
+            java.srcDirs('src/secondapp/java')
+        }
+        thirdapp {
+            java.srcDirs('src/thirdapp/java')
+        }
+        fourthapp {
+            java.srcDirs('src/fourthapp/java')
+        }
     }
 }
 

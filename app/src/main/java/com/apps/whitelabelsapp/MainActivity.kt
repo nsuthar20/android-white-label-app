@@ -1,8 +1,11 @@
 package com.apps.whitelabelsapp
 
+import SecondActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,5 +14,9 @@ class MainActivity : AppCompatActivity() {
 
         val textView: TextView = findViewById(R.id.text_view)
         textView.text = BuildConfig.FLAVOR
+
+        findViewById<MaterialButton>(R.id.btn_next).setOnClickListener {
+            startActivity(Intent(applicationContext, SecondActivity::class.java))
+        }
     }
 }
